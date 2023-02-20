@@ -7,14 +7,14 @@ import Container from './container'
 import Tags from './tags'
 import * as styles from './article-preview.module.css'
 
-const ArticlePreview = ({ posts }) => {
+const ArticlePreview = ({ posts, length }) => {
   if (!posts) return null
   if (!Array.isArray(posts)) return null
 
   return (
     <Container>
       <ul className={styles.articleList}>
-        {posts.map((post) => {
+        {posts.slice(0, length).map((post) => {
           return (
             <li key={post.slug}>
               <Link to={`/blog/${post.slug}`} className={styles.link}>
